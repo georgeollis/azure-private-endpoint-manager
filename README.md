@@ -1,4 +1,4 @@
-# Private Endpoint Manager
+# Azure Private Endpoint Manager
 
 <img src="images/image.png" alt="Private Endpoint Manager Logo" width="200">
 
