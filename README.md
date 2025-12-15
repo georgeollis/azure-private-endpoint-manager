@@ -1,6 +1,6 @@
-# Azure Private Endpoint Manager
+# Private Endpoint Manager
 
-<img src="images/image.png" alt="Private Endpoint Manager Logo" width="200">
+<img src="images/PEManager.svg" alt="Private Endpoint Manager Logo" width="200">
 
 Automated configuration of Azure Private Endpoints and Private DNS Zone linking for enterprise environments.
 
@@ -69,6 +69,10 @@ This solution provides:
 - **PowerShell 7 compatible** for modern cloud environments
 
 ## Architecture
+
+### High-Level Architecture
+
+![Private Endpoint Manager Architecture](images/high-level.svg)
 
 ### Components
 
