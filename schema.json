@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Private Endpoint Manager Configuration",
+  "description": "Configuration schema for Azure Private Endpoint DNS Manager",
+  "type": "object",
+  "required": [
+    "version",
+    "privateDnsZoneSubscriptionId",
+    "privateDnsZoneMappings"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema version"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Configuration version in semantic versioning format (e.g., 1.0.0)"
+    },
+    "privateDnsZoneSubscriptionId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+      "description": "Azure subscription ID where private DNS zones are located"
+    },
+    "excludedSubscriptionIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+      },
+      "description": "List of subscription IDs to exclude from processing",
+      "default": []
+    },
+    "privateDnsZoneMappings": {
+      "type": "object",
+      "description": "Mapping of private link service group IDs to their DNS zones",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "zoneName",
+          "resourceId"
+        ],
+        "properties": {
+          "zoneName": {
+            "type": "string",
+            "description": "FQDN of the private DNS zone (e.g., privatelink.blob.core.windows.net)"
+          },
+          "resourceId": {
+            "type": "string",
+            "pattern": "^/subscriptions/[a-f0-9-]+/resourceGroups/[^/]+/providers/Microsoft\\.Network/privateDnsZones/.+$",
+            "description": "Full Azure resource ID of the private DNS zone"
+          }
+        }
+      },
+      "minProperties": 1
+    }
+  },
+  "additionalProperties": false
+}
