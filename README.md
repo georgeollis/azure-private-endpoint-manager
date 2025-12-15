@@ -6,11 +6,11 @@ Automated configuration of Azure Private Endpoints and Private DNS Zone linking 
 
 ## Overview
 
-Private Endpoint Manager is a solution designed to automate the configuration and DNS linking of Azure Private Endpoints to centralized Private DNS zones. It provides enterprise-grade flexibility, observability, and control over private endpoint deployments without the limitations of pure policy-based approaches.
+Private Endpoint Manager is a solution designed to automate the configuration and DNS linking of Azure Private Endpoints to centralised Private DNS zones. It provides enterprise-grade flexibility, observability, and control over private endpoint deployments without the limitations of pure policy-based approaches.
 
 ### High-Level Architecture
 
-![Private Endpoint Manager Architecture](images/high-level.svg)
+![Private Endpoint Manager Architecture](images/high-level.png)
 
 ## The Problem
 
