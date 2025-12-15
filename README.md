@@ -1,5 +1,7 @@
 # Private Endpoint Manager
 
+![Private Endpoint Manager Logo](images/image.png)
+
 Automated configuration of Azure Private Endpoints and Private DNS Zone linking for enterprise environments.
 
 ## Overview
