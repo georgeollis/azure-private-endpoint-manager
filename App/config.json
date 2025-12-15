@@ -1,0 +1,24 @@
+{
+    "$schema": "https://raw.githubusercontent.com/georgeollis/azure-private-endpoint-manager/main/schema.json",
+    "version": "1.0.0",
+    "privateDnsZoneSubscriptionId": "baba41cf-c01d-4a55-b6c5-ca494b802be5",
+    "excludedSubscriptionIds": [],
+    "privateDnsZoneMappings": {
+        "file": {
+            "zoneName": "privatelink.file.core.windows.net",
+            "resourceId": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Network/privateDnsZones/privatelink.file.core.windows.net"
+        },
+        "blob": {
+            "zoneName": "privatelink.blob.core.windows.net",
+            "resourceId": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
+        },
+        "table": {
+            "zoneName": "privatelink.table.core.windows.net",
+            "resourceId": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Network/privateDnsZones/privatelink.table.core.windows.net"
+        },
+        "queue": {
+            "zoneName": "privatelink.queue.core.windows.net",
+            "resourceId": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net"
+        }
+    }
+}
