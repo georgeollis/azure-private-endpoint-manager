@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://raw.githubusercontent.com/georgeollis/azure-private-endpoint-manager/main/schema.json",
   "title": "Private Endpoint Manager Configuration",
   "description": "Configuration schema for Azure Private Endpoint DNS Manager",
   "type": "object",
