@@ -1,0 +1,59 @@
+{
+    "id": "bf4263d7-1f1a-4aef-8861-5a98b321fe26",
+    "topic": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5",
+    "subject": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Network/privateEndpoints/blob1",
+    "data": {
+        "resourceInfo": {
+            "tags": {
+                "hidden-pe-state": "central-provison"
+            },
+            "id": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Network/privateEndpoints/blob1",
+            "name": "blob1",
+            "type": "Microsoft.Network/privateEndpoints",
+            "location": "uksouth",
+            "properties": {
+                "provisioningState": "Updating",
+                "resourceGuid": "e7901ce7-40e8-467f-802f-bc90466aaddd",
+                "privateLinkServiceConnections": [
+                    {
+                        "name": "blob1",
+                        "id": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Network/privateEndpoints/blob1/privateLinkServiceConnections/blob1",
+                        "etag": "W/\"8ce3e794-2576-4aa5-ae3e-0ce369a14fc7\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateLinkServiceId": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Storage/storageAccounts/21321132132321",
+                            "groupIds": [
+                                "blob"
+                            ],
+                            "privateLinkServiceConnectionState": {
+                                "status": "Approved",
+                                "description": "Auto Approved",
+                                "actionsRequired": "None"
+                            }
+                        },
+                        "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+                    }
+                ],
+                "manualPrivateLinkServiceConnections": [],
+                "subnet": {
+                    "id": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
+                },
+                "networkInterfaces": [
+                    {
+                        "id": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Network/networkInterfaces/blob1-nic"
+                    }
+                ],
+                "customDnsConfigs": []
+            }
+        },
+        "operationalInfo": {
+            "resourceEventTime": "2025-12-15T19:25:53.1810767+00:00",
+            "correlationId": "b96600e5-4e4a-46e3-b35f-6e96d3efec8e"
+        },
+        "apiVersion": "2020-03-01"
+    },
+    "eventType": "Microsoft.ResourceNotifications.Resources.CreatedOrUpdated",
+    "dataVersion": "1",
+    "metadataVersion": "1",
+    "eventTime": "2025-12-15T19:25:53.1810767Z"
+}
