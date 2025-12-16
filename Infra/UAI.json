@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "userAssignedIdentities_private_endpoint_manager_name": {
+            "defaultValue": "private-endpoint-manager",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "apiVersion": "2025-01-31-preview",
+            "name": "[parameters('userAssignedIdentities_private_endpoint_manager_name')]",
+            "location": "uksouth"
+        }
+    ]
+}
