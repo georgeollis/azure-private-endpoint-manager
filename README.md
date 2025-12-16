@@ -1,4 +1,4 @@
-# Azure Private Endpoint Manager
+# Private Endpoint Manager
 
 <img src="images/PEManager.svg" alt="Private Endpoint Manager Logo" width="200">
 
@@ -6,11 +6,11 @@ Automated configuration of Azure Private Endpoints and Private DNS Zone linking 
 
 ## Overview
 
-Private Endpoint Manager is a solution designed to automate the configuration and DNS linking of Azure Private Endpoints to centralised Private DNS zones. It provides enterprise-grade flexibility, observability, and control over private endpoint deployments without the limitations of pure policy-based approaches.
+Private Endpoint Manager is a solution designed to automate the configuration and DNS linking of Azure Private Endpoints to centralized Private DNS zones. It provides enterprise-grade flexibility, observability, and control over private endpoint deployments without the limitations of pure policy-based approaches.
 
 ### High-Level Architecture
 
-![Private Endpoint Manager Architecture](images/high-level.png)
+![Private Endpoint Manager Architecture](images/high-level.svg)
 
 ## The Problem
 
@@ -120,6 +120,26 @@ The solution uses a central configuration file to map private link service group
   }
 }
 ```
+
+### Tag-Based Control
+
+To enable Azure Private Endpoint Manager to manage private endpoints and automate DNS zone pinning or other extensions, provision your private endpoints with the following tag:
+
+| Tag Name | Tag Value | Purpose |
+|----------|-----------|---------|
+| `hidden-pe-state` | `central-provision` | Signals to Private Endpoint Manager that this endpoint should be managed and configured |
+
+When Private Endpoint Manager successfully manages a private endpoint, the tag value will automatically transition to `provisioned`, indicating that the endpoint is under active management and has been configured.
+
+This tag-based approach provides powerful operational benefits:
+
+- **Selective Enablement**: Only private endpoints tagged with `hidden-pe-state: central-provision` will be managed by Private Endpoint Manager, while untagged endpoints remain unaffected
+- **Easy Onboarding**: Existing private endpoints can be easily onboarded by simply adding the required tag—no other configuration changes needed
+- **Environmental Flexibility**: Environments that shouldn't use central DNS zones can simply omit the tag, ensuring they are automatically excluded from automation
+- **Clear Intent**: The tag serves as explicit documentation of which endpoints are under centralized management, with state transitions (central-provision → provisioned) providing visibility into management status
+- **State Tracking**: The tag value change from `central-provision` to `provisioned` allows you to audit which endpoints have been successfully managed
+
+This design allows for graceful coexistence of managed and unmanaged private endpoints in your Azure environment while maintaining clear audit trails of configuration intent.
 
 ## Requirements
 
