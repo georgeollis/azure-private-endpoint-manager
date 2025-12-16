@@ -1,0 +1,89 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "systemTopics_event_grid_temp_name": {
+            "defaultValue": "event-grid-temp",
+            "type": "String"
+        },
+        "userAssignedIdentities_private_endpoint_manager_externalid": {
+            "defaultValue": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/0102vm_group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/private-endpoint-manager",
+            "type": "String"
+        },
+        "storageAccounts_staccount21302130_externalid": {
+            "defaultValue": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/private-endpoint-dns-manager/providers/Microsoft.Storage/storageAccounts/staccount21302130",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.EventGrid/systemTopics",
+            "apiVersion": "2025-04-01-preview",
+            "name": "[parameters('systemTopics_event_grid_temp_name')]",
+            "location": "global",
+            "identity": {
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities": {
+                    "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5/resourceGroups/0102vm_group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/private-endpoint-manager": {}
+                }
+            },
+            "properties": {
+                "source": "/subscriptions/baba41cf-c01d-4a55-b6c5-ca494b802be5",
+                "topicType": "Microsoft.ResourceNotifications.Resources"
+            }
+        },
+        {
+            "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
+            "apiVersion": "2025-04-01-preview",
+            "name": "[concat(parameters('systemTopics_event_grid_temp_name'), '/TEST')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventGrid/systemTopics', parameters('systemTopics_event_grid_temp_name'))]"
+            ],
+            "properties": {
+                "deliveryWithResourceIdentity": {
+                    "identity": {
+                        "type": "UserAssigned",
+                        "userAssignedIdentity": "[parameters('userAssignedIdentities_private_endpoint_manager_externalid')]"
+                    },
+                    "destination": {
+                        "properties": {
+                            "resourceId": "[parameters('storageAccounts_staccount21302130_externalid')]",
+                            "queueName": "new-private-endpoint",
+                            "queueMessageTimeToLiveInSeconds": 604800
+                        },
+                        "endpointType": "StorageQueue"
+                    }
+                },
+                "filter": {
+                    "includedEventTypes": [
+                        "Microsoft.ResourceNotifications.Resources.CreatedOrUpdated"
+                    ],
+                    "enableAdvancedFilteringOnArrays": true,
+                    "advancedFilters": [
+                        {
+                            "values": [
+                                "Microsoft.Network/privateEndpoints"
+                            ],
+                            "operatorType": "StringIn",
+                            "key": "data.resourceInfo.type"
+                        },
+                        {
+                            "values": [
+                                "central-provision"
+                            ],
+                            "operatorType": "StringIn",
+                            "key": "data.resourceInfo.tags.hidden-pe-state"
+                        }
+                    ]
+                },
+                "labels": [],
+                "eventDeliverySchema": "EventGridSchema",
+                "retryPolicy": {
+                    "maxDeliveryAttempts": 30,
+                    "eventTimeToLiveInMinutes": 1440
+                }
+            }
+        }
+    ]
+}
