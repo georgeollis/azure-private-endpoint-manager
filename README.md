@@ -54,6 +54,16 @@ This solution provides:
 - **Selective filtering** of subscriptions, resource groups, and resource types
 - **Integration capabilities** with external DNS systems and private access technologies
 - **Event-driven automation** using Azure Queue Storage for reliable processing
+- **Distributed DNS zones**: As long as the application has RBAC access to your private DNS zones, they can be hosted in separate resource groups or even entirely different subscriptions
+
+#### Deployment Options
+Private Endpoint Manager can be deployed flexibly to match your organizational structure:
+
+- **Dedicated PE Manager Subscription**: Create a dedicated subscription for Private Endpoint Manager with RBAC permissions to your private DNS zones across multiple subscriptions
+- **Connectivity Subscription**: Deploy Private Endpoint Manager alongside your central DNS zones in your connectivity subscription (ideal if you're hosting central DNS zones there)
+- **Hybrid Approach**: Deploy the application in one subscription while DNS zones exist in another, leveraging RBAC for cross-subscription management
+
+This flexibility allows you to integrate Private Endpoint Manager seamlessly into your existing Azure governance and subscription architecture without restructuring your network topology.
 
 ### Observability & Control
 - **Detailed logging** of all operations for audit trails
