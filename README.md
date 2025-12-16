@@ -10,7 +10,7 @@ Private Endpoint Manager is a solution designed to automate the configuration an
 
 ### High-Level Architecture
 
-![Private Endpoint Manager Architecture](images/high-level.svg)
+![Private Endpoint Manager Architecture](images/high-level.png)
 
 ## The Problem
 
