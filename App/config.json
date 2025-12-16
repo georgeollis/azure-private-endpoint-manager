@@ -1,8 +1,6 @@
 {
-    "$schema": "https://raw.githubusercontent.com/georgeollis/azure-private-endpoint-manager/main/schema.json",
+    "$schema": "https://raw.githubusercontent.com/georgeollis/azure-private-endpoint-manager/main/Samples/schema.json",
     "version": "1.0.0",
-    "privateDnsZoneSubscriptionId": "baba41cf-c01d-4a55-b6c5-ca494b802be5",
-    "excludedSubscriptionIds": [],
     "privateDnsZoneMappings": {
         "file": {
             "zoneName": "privatelink.file.core.windows.net",
