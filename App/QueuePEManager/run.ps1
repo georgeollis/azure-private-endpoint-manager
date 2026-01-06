@@ -3,12 +3,6 @@ param($QueueItem, $TriggerMetadata)
 
 # Import PrivateEndpoint.Manager module
 $moduleName = 'PrivateEndpoint.Manager'
-$modulePath = Join-Path $PSScriptRoot '..\Modules\PrivateEndpoint.Manager'
-
-# Add module path if not already present
-if ($modulePath -notin $env:PSModulePath.Split(';')) {
-    $env:PSModulePath = "$modulePath;$env:PSModulePath"
-}
 
 Import-Module -Name $moduleName -Force
 
